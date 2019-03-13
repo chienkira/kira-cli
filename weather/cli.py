@@ -1,24 +1,18 @@
+from colorama import init
 import click
-from .functions import get_weather_info
+from .functions import get_weather_info, pretty_print
+
+init(autoreset=True)
 
 
-@click.group()
-@click.option("--city", help="City name.")
-@click.pass_context
-def main(context, city: str):
-    context.obj["city"] = city
-
-
-@main.command()
-@click.pass_context
-def daily(context):
-    return
-
-
-@main.command()
-@click.pass_context
-def hourly(context):
-    return
+@click.command()
+@click.argument("city")
+@click.option("--language", help="Language Ex: ja, en.", default="en")
+@click.option("--interval", help="Interval (daily or hourly). Default is daily.", default="daily")
+def main(city: str, language: str, interval: str):
+    """Kira-cli | display weather information that retrieve from darksky API"""
+    data = get_weather_info(city, language, interval)
+    pretty_print(data)
 
 
 def start():

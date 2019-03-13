@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 click = "*"
+requests = "*"
+colorama = "*"
 
 [requires]
 python_version = "3.6"
