@@ -66,7 +66,7 @@ def pretty_print(data):
 
     if currently:
         print(Back.LIGHTCYAN_EX + Fore.BLACK + ' Hiện tại__________')
-        print(Fore.LIGHTCYAN_EX + "Thời tiết {}, nhiệt độ khoảng {}°C và vận tốc gió khoảng {}m/s.".format(
+        print(Fore.LIGHTCYAN_EX + "Thời tiết {}, nhiệt độ khoảng {:.1f}°C và vận tốc gió khoảng {:.1f}m/s.".format(
             currently['summary'],
             currently['apparentTemperature'],
             currently['windSpeed']))
@@ -76,17 +76,17 @@ def pretty_print(data):
         print(Back.LIGHTBLUE_EX + Fore.BLACK + ' Trong 7 ngày tới__')
         print(Fore.LIGHTBLUE_EX + "Dự báo: " + daily['summary'])
         for day in daily['data']:
-            print(Fore.LIGHTYELLOW_EX + "\t_____{}_____".format(
-                datetime.datetime.fromtimestamp(day['time']).strftime("%m/%d")), end='')
+            print(Fore.LIGHTYELLOW_EX + " __{}__\t".format(
+                datetime.datetime.fromtimestamp(day['time']).strftime("%m/%d(%a)")), end='')
         print()
         for day in daily['data']:
-            print(Fore.LIGHTBLUE_EX + "\t  {}".format(get_readable_icon(day['icon'])), end='')
+            print(Fore.LIGHTBLUE_EX + "   {}\t".format(get_readable_icon(day['icon'])), end='')
         print()
         for day in daily['data']:
-            print("\t{} ~ {}°C".format(day['temperatureLow'], day['temperatureHigh']), end='')
+            print("  {:.1f} ~ {:.1f}°C\t".format(day['temperatureLow'], day['temperatureHigh']), end='')
         print()
         for day in daily['data']:
-            print("\t〻 {}m/s".format(day['windSpeed']), end='')
+            print(" 〻 {:.1f}m/s\t".format(day['windSpeed']), end='')
         print()
         print()
 
