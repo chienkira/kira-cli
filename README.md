@@ -21,6 +21,6 @@ My personalised useful cli
 
 ```bash
 git clone https://github.com/chienkira/kira-cli.git && cd kira-cli
-python setup.py install
+sudo python setup.py install
 weather tokyo
 ```
