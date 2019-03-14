@@ -19,8 +19,10 @@ My personalised useful cli
 
 # Installation
 
+*Now, it requires a python3 enviroment*
+
 ```bash
 git clone https://github.com/chienkira/kira-cli.git && cd kira-cli
-sudo python setup.py install
+python setup.py install
 weather tokyo
 ```
